@@ -1,0 +1,79 @@
+```html
+<!-- control-panel-7x9.html -->
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Control Panel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="achievement" class="achievement hidden"></div>
+
+  <section class="contact">
+
+    <h2>Control Panel</h2>
+
+    <div class="contact-box" id="loginBox">
+
+      <input
+        id="adminUser"
+        placeholder="Gebruikersnaam"
+      >
+
+      <input
+        id="adminPass"
+        type="password"
+        placeholder="Wachtwoord"
+      >
+
+      <button onclick="login()">
+        Login
+      </button>
+
+      <p id="loginOutput"></p>
+
+    </div>
+
+    <div
+      class="contact-box"
+      id="adminBox"
+      style="display:none;"
+    >
+
+      <h3>Welkom admin</h3>
+
+      <p>
+        Toegang verleend tot het interne systeem.
+      </p>
+
+      <div class="project-card">
+        <p><strong>Status:</strong> Online</p>
+        <p><strong>Systeem:</strong> CyberLab Internal</p>
+        <p><strong>Security:</strong> Demo Environment</p>
+      </div>
+
+      <h3>Login Attempts</h3>
+
+      <div id="attempts"></div>
+
+      <button onclick="clearAttempts()">
+        Wis login attempts
+      </button>
+
+      <button onclick="logout()">
+        Uitloggen
+      </button>
+
+    </div>
+
+  </section>
+
+  <script src="admin.js"></script>
+
+</body>
+</html>
+```

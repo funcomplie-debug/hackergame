@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CyberLab Challenge</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <nav>
+      <h1>CYBERLAB</h1>
+
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#terminal">Terminal</a></li>
+        <li><a href="#missions">Missies</a></li>
+        <li><a href="#about">Info</a></li>
+      </ul>
+    </nav>
+
+    <section class="hero" id="home">
+      <h2>Cyber Security Challenge</h2>
+      <p>Deep inside the code, you will find the first hint.</p>
+
+      <button onclick="scrollToTerminal()">
+        Start Challenge
+      </button>
+    </section>
+  </header>
+
+  <main>
+
+    <section class="contact" id="terminal">
+      <h2>Code Terminal</h2>
+
+      <div class="contact-box">
+        <input
+          type="text"
+          id="secretCode"
+          placeholder="Enter decoded message..."
+        >
+
+        <button onclick="checkCode()">
+          Submit
+        </button>
+
+        <p id="codeOutput"></p>
+      </div>
+    </section>
+
+    <section class="missions" id="missions" style="display:none;">
+      <h2>Missies</h2>
+
+      <div class="contact-box">
+        <label>
+          <input type="checkbox">
+          Level 1 — Find the Base64 code
+        </label>
+
+        <label>
+          <input type="checkbox">
+          Level 2 — Go to the admin panel
+        </label>
+
+        <label>
+          <input type="checkbox">
+          Level 3 — Find the secret page
+        </label>
+
+        <label>
+          <input type="checkbox">
+          Level 4 — Unlock the final code
+        </label>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <h2>Over deze challenge</h2>
+
+      <div class="about-grid">
+        <div class="card">
+          <h3>Web Security</h3>
+          <p>Leer hoe websites en adminpanelen werken.</p>
+        </div>
+
+        <div class="card">
+          <h3>Browser Tools</h3>
+          <p>Gebruik DevTools, localStorage en de console.</p>
+        </div>
+
+        <div class="card">
+          <h3>CTF Style</h3>
+          <p>Een beginner-vriendelijke hacking challenge.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 CyberLab Challenge</p>
+  </footer>
+
+  <!-- WW91IGhhdmUgdGFrZW4gdGhlIGZpcnN0IHN0ZXAuIEFyZSB5b3Ugc3VyZSB5b3UncmUgb24gdGhlIHJpZ2h0IHBhdGg/IFNlYXJjaCBmb3IgdGhlIGFkbWluIHBhbmVsLg== -->
+
+  <script>
+    function scrollToTerminal() {
+      document.getElementById("terminal").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    function checkCode() {
+      const code = document.getElementById("secretCode").value
+        .trim()
+        .toLowerCase();
+
+      const output = document.getElementById("codeOutput");
+      const missions = document.getElementById("missions");
+
+      if (code.includes("admin panel")) {
+        output.textContent = "Well done. Access granted.";
+        missions.style.display = "block";
+
+        missions.scrollIntoView({
+          behavior: "smooth"
+        });
+      } else {
+        output.textContent = "Incorrect code.";
+      }
+    }
+  </script>
+
+</body>
+</html>
