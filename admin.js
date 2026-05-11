@@ -1,7 +1,24 @@
-let loginAttempts = JSON.parse(localStorage.getItem("loginAttempts")) || [];
+let loginAttempts =
+  JSON.parse(localStorage.getItem("loginAttempts")) || [];
 
 window.addEventListener("load", () => {
-  showAchievement("level1", "🏆 Level 1 gehaald: Admin panel gevonden!");
+  if (localStorage.getItem("level1") !== "completed") {
+    document.body.innerHTML = `
+      <section class="contact">
+        <div class="contact-box">
+          <h2>ACCESS DENIED</h2>
+          <p>Complete the first challenge before entering the admin panel.</p>
+          <a href="index.html">Return to challenge</a>
+        </div>
+      </section>
+    `;
+    return;
+  }
+
+  showAchievement(
+    "adminFound",
+    "🏆 Level 2: Admin panel found!"
+  );
 });
 
 function showAchievement(key, text) {
@@ -21,7 +38,10 @@ function showAchievement(key, text) {
 }
 
 function saveAttempts() {
-  localStorage.setItem("loginAttempts", JSON.stringify(loginAttempts));
+  localStorage.setItem(
+    "loginAttempts",
+    JSON.stringify(loginAttempts)
+  );
 }
 
 function login() {
@@ -42,8 +62,14 @@ function login() {
     document.getElementById("adminBox").style.display = "flex";
     output.textContent = "";
 
+    localStorage.setItem("level2", "completed");
+
     showAttempts();
-    showAchievement("level2", "🏆 Level 2 gehaald: Admin login gevonden!");
+
+    showAchievement(
+      "adminLogin",
+      "🏆 Level 3: Admin login cracked!"
+    );
   } else {
     output.textContent = "Verkeerde gebruikersnaam of wachtwoord.";
   }
